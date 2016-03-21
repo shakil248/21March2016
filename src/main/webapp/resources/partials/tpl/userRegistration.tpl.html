@@ -1,0 +1,66 @@
+<div>
+
+<form role="form" name="registrationFrom">
+	<div>
+		 <h3 style="margin-left: 123px;">Profile Picture</h3>
+		 <img id="output" height="150" width="120" style="margin-left: 122px; margin-bottom:20px" />
+		 <div>
+		 <input id="InputProfilePicture" type="file" accept="image/*" onchange="angular.element(this).scope().uploadImage(this.files)" value="Upload Photo" style="margin-left: 120px;margin-bottom:20px" data-buttonText="Your label here.">
+		 </div>
+	</div>
+	<div>
+		<label for="InputLoginId">Login Id</label>
+		<input type="text" placeholder="Enter Login Id" id="InputLoginId" required ng-model="user.loginId" style="margin-left: 60px;">
+		
+	</div>
+	<div>
+		<label for="InputPassword">Password</label>
+		<input type="password" placeholder="It must be alphanumeric" id="inputPassword" ng-min="6" ng-max="10" required ng-model="user.password"  ng-pattern="/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/" style="margin-left: 55px;">
+	</div>
+	<div>
+		<label for="InputUserName">User Name</label>
+		<input type="text" placeholder="Enter Name" id="InputLoginId" required ng-model="user.userName" style="margin-left: 44px;">
+		
+	</div>
+	<div>
+		<label for="InputEmailId">Email Id</label>
+		<input type="email" placeholder="abc@xyz.com" id="InputEmailId" required ng-model="user.emailId" style="margin-left: 60px;">
+		
+	</div>
+	<h3>Address</h3>
+	<div>
+		<label for="InputHouseNo">House No</label>
+		<input type="number" placeholder="It must be number" id="InputHouseNo" required ng-model="user.address.houseNo" style="margin-left: 52px;" >
+			
+	</div>
+	<div>
+		<label for="InputStreet">Street</label>
+		<input type="text" placeholder="Enter Street" id="InputStreet" required ng-model="user.address.street" style="margin-left: 79px;">
+		
+	</div>
+	<div>
+		<label for="InputCity">City</label>
+		<input type="text" placeholder="Enter City" id="InputCity" required ng-model="user.address.city" style="margin-left: 88px;">
+		
+	</div>
+	<div>
+		<label for="InputState">State</label>
+		 <select id="InputState" ng-model="user.address.stateId" ng-options="obj.stateId as obj.stateName for obj in states" style="margin-left: 84px;"><option value="">States</option></select>
+		 
+	</div>
+	<div>
+		<label for="InputCountry">Country</label>
+		<input type="text" placeholder="Enter Country" id="InputCountry" required ng-model="user.address.country" style="margin-left: 64px;" >
+		
+	</div>
+	<div>
+	<button class="btn btn-default" type="submit" ng-click="createUser(user)" ng-disabled="registrationFrom.$invalid || !imageLoaded" style="margin-left: 119px; margin-top: 30px">Submit</button>	
+	<button class="btn btn-default" type="button" ng-click="clearUser(user)" >Clear</button>
+	</div>
+
+	
+	<span style="color:red">{{errorMessage}}</span>
+	</form>
+	
+	
+</div>

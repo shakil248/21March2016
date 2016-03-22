@@ -11,7 +11,7 @@ app.controller('adminCtrl', ['$scope','adminService', function ($scope,adminServ
             url: 'resources/partials/tpl/three.tpl.html'
     }];
 
-    $scope.currentTab = 'one.tpl.html';
+    $scope.currentTab = 'resources/partials/tpl/productCategory.tpl.html';
 
     $scope.onClickTab = function (tab) {
     	 $scope.getProductCategories();
@@ -22,8 +22,10 @@ app.controller('adminCtrl', ['$scope','adminService', function ($scope,adminServ
         return tabUrl == $scope.currentTab;
     };
     
-    $scope.getProductCategories=function(){
-    	adminService.getProductCategories($scope);
+    $scope.getProductCategories = function(){
+    	adminService.getProductCategories($scope).then(function(pCats) {
+    		$scope.productCategories = pCats;
+    	});
 	};
     
     $scope.createProductCat=function(productCat){
@@ -32,6 +34,9 @@ app.controller('adminCtrl', ['$scope','adminService', function ($scope,adminServ
     $scope.clearProductCat = function(productCat){
 		$scope.productCat=null;
 		 $scope.errorMessage="";
+	};
+	$scope.editProductCat = function(productCat){
+		$scope.productCat = productCat;
 	};
     $scope.createProduct=function(product){
     		adminService.createProduct(product,$scope);

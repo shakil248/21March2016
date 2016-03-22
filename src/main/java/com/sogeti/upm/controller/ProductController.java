@@ -1,5 +1,7 @@
 package com.sogeti.upm.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +36,12 @@ public class ProductController {
 		  }
 		  return new ResponseEntity<Product>(product, HttpStatus.OK);
 	    }
+	
+	@RequestMapping(value = "/getproductbycat", method = RequestMethod.GET)
+    public ResponseEntity<List<Product>> getProductByCat(@RequestParam(value = "productCatId") String productCatId) {
+	List<Product> products = productService.getProducts(productCatId);
+	  return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
+    }
 	
 	@RequestMapping(value = "/createproduct", method = RequestMethod.POST)
     public @ResponseBody ResponseEntity<Void> createProduct(@RequestBody Product product) {

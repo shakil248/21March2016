@@ -18,9 +18,15 @@
 <spring:url value="/resources/js/services/sessionService.js" var="sessionServiceJS" />
 <spring:url value="/resources/js/services/userService.js" var="userServiceJS" />
 
+	<spring:url value="/resources/lib/angular/ngCart.js" var="ngcartJS" />
+	
     <spring:url value="/resources/js/directives/adminDirective.js" var="adminDirectiveJS" />
     <spring:url value="/resources/js/controllers/adminCtrl.js" var="adminCtrlJS" />
     <spring:url value="/resources/js/services/adminService.js" var="adminServiceJS" />
+    <spring:url value="/resources/js/directives/homeDirective.js" var="homeDirectiveJS" />
+    <spring:url value="/resources/js/controllers/homeCtrl.js" var="homeCtrlJS" />
+    <spring:url value="/resources/js/services/homeService.js" var="homeServiceJS" />
+    
 
 
 
@@ -37,9 +43,15 @@
 <script src="${sessionServiceJS}"></script>
 <script src="${userServiceJS}"></script>
 
+ <script src="${ngcartJS}"></script>
+ 
     <script src="${adminDirectiveJS}"></script>
     <script src="${adminCtrlJS}"></script>
      <script src="${adminServiceJS}"></script>
+     
+     <script src="${homeDirectiveJS}"></script>
+    <script src="${homeCtrlJS}"></script>
+     <script src="${homeServiceJS}"></script>
 
 </head>
 <body   >

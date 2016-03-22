@@ -1,0 +1,8 @@
+<div>
+<ul>
+  <li ng-repeat="x	in products">
+  	<ngcart-addtocart id="{{ x.productId }}" name="{{ x.productName }}" price="{{ x.productPrice }}" quantity="1" quantity-max="30" data="x"></ngcart-addtocart>
+<!--     {{ x.productName + ', ' + x.productPrice }} <button ng-click="addToCart(x)">Add To Cart</button> -->
+  </li>
+</ul>
+</div>

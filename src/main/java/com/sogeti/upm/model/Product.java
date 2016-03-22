@@ -17,15 +17,15 @@ public class Product {
 	@Id
     @Column(name="product_Id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	String productId;
-	String productCatId;
-	String productName;
-	String productDesc;
-	String productPrice;
-	Integer inStock;
-	Boolean isActive;
-	Date createDate;
-	Date updateDate;
+	private String productId;
+	private String productCatId;
+	private String productName;
+	private String productDesc;
+	private String productPrice;
+	private Integer inStock;
+	private Boolean isActive;
+	private Date createDate;
+	private Date updateDate;
 	
 	@Column(name="image", length = 20971520)
 	private byte[] image;

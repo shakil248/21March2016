@@ -40,15 +40,11 @@ app.factory('adminService',['$http', function($http) {
     		 
     	 },		
     	 getProductCategories: function(scope) {
-    		 var res = $http.get('http://localhost:8080/upm/getallproductcat');
-    		 res.success(function(data, status, headers, config) {
-				  console.log("Success get States", data);
-				  scope.productCategories = data;
-			});
-			res.error(function(data, status, headers, config) {
-				 console.log("Failure get States");
-			});	
-
+    		 var promise = $http.get('http://localhost:8080/upm/getallproductcat').
+    		 then(function  (response) {
+                 return response.data;
+             });
+				 return promise;
     	 },
     	 
     	 uploadImage:function(files){

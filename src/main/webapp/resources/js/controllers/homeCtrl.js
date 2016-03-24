@@ -1,5 +1,5 @@
 'use strict';
-app.controller('homeCtrl', ['$scope','homeService','adminService','ngCart', function ($scope,homeService,adminService,ngCart) {
+app.controller('homeCtrl', ['$scope','homeService','adminService', function ($scope,homeService,adminService) {
 	$scope.tabs = new Array();
 	
     $scope.getProductCategories = function (){
@@ -9,7 +9,7 @@ app.controller('homeCtrl', ['$scope','homeService','adminService','ngCart', func
         		if(index==0){
         			$scope.currentTab = 'resources/partials/tpl/home/'+productCat.productCatName+'.tpl.html';
         		}
-        		  $scope.tabs.push({title:productCat.productCatName,catId:productCat.productCatId, url:'resources/partials/tpl/home/'+productCat.productCatName+'.tpl.html'});
+        		  $scope.tabs.push({title:productCat.productCatName,catId:productCat.productCatId, url:$scope.currentTab});
         	});
     		
     	});

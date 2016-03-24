@@ -14,64 +14,59 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name="CART_DETAIL")
-public class CartDetail extends BaseModel {
-	
+@Table(name="ORDER_DETAIL")
+public class OrderDetail extends BaseModel{
+
 	
 	@Id
-    @Column(name="cart_detail_Id")
+    @Column(name="order_detail_Id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String cartDetailId;
+	private String orderDetailId;
 	
-	@Column(name="product_Id")
+	@Column(name="product_id")
 	private String productId;
-	@Column(name="product_name")
-	private String productName;
-	@Column(name="product_price")
-	private String productPrice;
+
 	@Column(name="quantity")
 	private Integer quantity;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name="cart_Id")
+	@JoinColumn(name="order_id")
 	@JsonBackReference
-	private Cart cart;
-	
-	public String getCartDetailId() {
-		return cartDetailId;
+	private Order order;
+
+	public String getOrderDetailId() {
+		return orderDetailId;
 	}
-	public void setCartDetailId(String cartDetailId) {
-		this.cartDetailId = cartDetailId;
+
+	public void setOrderDetailId(String orderDetailId) {
+		this.orderDetailId = orderDetailId;
 	}
-	
+
 	public String getProductId() {
 		return productId;
 	}
+
 	public void setProductId(String productId) {
 		this.productId = productId;
 	}
-	public String getProductName() {
-		return productName;
-	}
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-	public String getProductPrice() {
-		return productPrice;
-	}
-	public void setProductPrice(String productPrice) {
-		this.productPrice = productPrice;
-	}
+
 	public Integer getQuantity() {
 		return quantity;
 	}
+
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	public Cart getCart() {
-		return cart;
+
+	public Order getOrder() {
+		return order;
 	}
-	public void setCart(Cart cart) {
-		this.cart = cart;
+
+	public void setOrder(Order order) {
+		this.order = order;
 	}
+	
+	
+	
+	
 }

@@ -1,5 +1,5 @@
 'use strict';
-app.factory('homeService',['$http', function($http) {
+app.factory('homeService',['$http','sessionService', function($http,sessionService) {
     return {
     	getProductByCat: function(pcId,scope) { 
     		
@@ -11,14 +11,28 @@ app.factory('homeService',['$http', function($http) {
 			},
 
 		addToCart: function(product){
-			var res = $http.post('http://localhost:8080/upm/addtocart', product);
+			
+			var cartDetails = new Array();
+			var cartDetail = new Object();
+			cartDetail.productId = product.productId;
+			cartDetail.productName = product.productName;
+			cartDetail.productPrice = product.productPrice;
+			cartDetail.quantity = product.quantity;
+			cartDetails.push(cartDetail);
+			
+			
+			var cart = new Object();
+			cart.cartDetails = cartDetails;
+			cart.loginId = sessionService.get('loginId');
+			
+			
+			var res = $http.post('http://localhost:8080/upm/addtocart', cart);
 			res.success(function(data, status, headers, config) {
 				  console.log("Success", data);
 					
 			});
 			res.error(function(data, status, headers, config) {
 				 console.log(data);
-				 scope.saveStatus = "!Oops addtocart failed";
 			});	
 			},
     	 uploadImage:function(files){

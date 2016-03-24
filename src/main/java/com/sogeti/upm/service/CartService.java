@@ -1,15 +1,12 @@
-package com.sogeti.upm.dao;
+package com.sogeti.upm.service;
 
 import com.sogeti.upm.model.Cart;
 import com.sogeti.upm.model.CartDetail;
 
-
-public interface CartDAO {
+public interface CartService {
 	
-	public void saveCart(Cart cart);
-	public void updateCart(Cart cart);
+	public void createOrUpdateCart(Cart cart);
 	public Cart getCart(String loginId);
 	public void removeCartItem(CartDetail cartDetail);
-	
 
 }

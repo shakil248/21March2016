@@ -36,8 +36,8 @@ public class UserController {
 	    public ResponseEntity<User> getUser(@RequestParam(value = "loginId") String loginId) {
 		  User user =  userService.getUserByLoginId(loginId);
 		  if(null!=user){
-			  String s = new String(user.getImage());
-			  user.setData(s);
+//			  String s = new String(user.getImage());
+//			  user.setData(s);
 		  }
 		  return new ResponseEntity<User>(user, HttpStatus.OK);
 	    }
@@ -50,7 +50,7 @@ public class UserController {
 	 
 	 @RequestMapping(value = "/user", method = RequestMethod.POST)
 	    public @ResponseBody ResponseEntity<Void> createUser(@RequestBody User user) {
-			user.setImage(user.getData().getBytes());
+//			user.setImage(user.getData().getBytes());
 		 	user.setData(null);
 	        userService.createOrUpdateUser(user);
 	        return new ResponseEntity<Void>(HttpStatus.CREATED);

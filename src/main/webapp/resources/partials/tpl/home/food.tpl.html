@@ -1,8 +1,6 @@
 <div>
 <ul>
-  <li ng-repeat="x	in products">
-  	<ngcart-addtocart id="{{ x.productId }}" name="{{ x.productName }}" price="{{ x.productPrice }}" quantity="1" quantity-max="30" data="x"></ngcart-addtocart>
-<!--     {{ x.productName + ', ' + x.productPrice }} <button ng-click="addToCart(x)">Add To Cart</button> -->
-  </li>
+	<li ng-repeat="x in products">
+		{{x.productName +' '+x.productPrice }} <input type="text" ng-model="x.quantity"/><button ng-click="addToCart(x)">Add to Cart</button>
 </ul>
 </div>

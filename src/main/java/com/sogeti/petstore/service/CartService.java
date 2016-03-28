@@ -1,0 +1,12 @@
+package com.sogeti.petstore.service;
+
+import com.sogeti.petstore.model.Cart;
+import com.sogeti.petstore.model.CartDetail;
+
+public interface CartService {
+	
+	public void createOrUpdateCart(Cart cart);
+	public Cart getCart(String loginId);
+	public void removeCartItem(CartDetail cartDetail);
+
+}

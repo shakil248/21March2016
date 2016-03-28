@@ -24,15 +24,28 @@ app.factory('cartService',['$http', function($http) {
     		 
     	 	},
     createOrder: function(cart) { 
-    			var res = $http.post('http://localhost:8080/upm/createorder', cart);
+    	var orderDetails = new Array();
+    	var totalAmount = 0.0;
+    	angular.forEach(cart.cartDetails, function(cartDetail){
+    		var orderDetail = new Object();
+    		orderDetail.productId = cartDetail.productId;
+    		orderDetail.quantity = cartDetail.quantity;
+    		totalAmount = totalAmount + cartDetail.productPrice;
+    		orderDetails.push(orderDetail);
+    	});
+    	var order = new Object();
+    	order.loginId= cart.loginId;
+    	order.totalAmount= totalAmount;
+    	order.orderDetails = orderDetails;
+    	order.status = "InProgress";
+    	
+    			var res = $http.post('http://localhost:8080/upm/createorder', order);
     			res.success(function(data, status, headers, config) {
     				  console.log("Success", data);
-    				  scope.saveStatus = "Order created Successfuly";
   					
     			});
     			res.error(function(data, status, headers, config) {
     				 console.log(data);
-    				 scope.saveStatus = "!Oops creation failed";
     			});	
     			
     		},

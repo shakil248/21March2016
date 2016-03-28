@@ -18,15 +18,6 @@ app.factory('loginService', function($location,$http,sessionService) {
 		});	
 		},
 		
-		generateotp: function(lId){
-				var promise  = $http.get('http://localhost:8080/upm/generateotp',{params: {loginId: lId}}).
-                then(function  (response) {
-                    return response.data.otp;
-                });
-				return promise ;
-				
-		},
-	
 		logout: function(){
 				if(sessionService.get('loginId')){
 					sessionService.destroy('loginId');

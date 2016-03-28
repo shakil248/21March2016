@@ -1,11 +1,12 @@
 'use strict';
-app.factory('userService',['$http','$rootScope', function($http,$rootScope) {
+app.factory('userService',['$http','$rootScope','urlService', function($http,$rootScope,urlService) {
 	
 	
     return {
+    	
     	createUser: function(user,scope) { 
 // 		    	user.data = getBase64Image();
-    			var res = $http.post('http://localhost:8080/upm/user', user);
+    			var res = $http.post(urlService.getURL()+'user', user);
     			res.success(function(data, status, headers, config) {
     				  console.log("Success", data);
     				  scope.saveStatus = "Saved Successfuly";
@@ -18,7 +19,7 @@ app.factory('userService',['$http','$rootScope', function($http,$rootScope) {
     			
     			},
     	 getUser: function(lId){
-				var promise  = $http.get('http://localhost:8080/upm/getuser',{params: {loginId: lId}}).
+				var promise  = $http.get(urlService.getURL()+'getuser',{params: {loginId: lId}}).
                 then(function  (response) {
 //                	setImage(response.data.data);
                     return response.data;
@@ -27,7 +28,7 @@ app.factory('userService',['$http','$rootScope', function($http,$rootScope) {
     		 
     	 },		
     	 getStates: function(scope) {
-    		 var res = $http.get('http://localhost:8080/upm/states');
+    		 var res = $http.get(urlService.getURL()+'states');
     		 res.success(function(data, status, headers, config) {
 				  console.log("Success get States", data);
 				  scope.states = data;

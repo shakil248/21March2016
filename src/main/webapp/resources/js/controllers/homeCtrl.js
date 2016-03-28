@@ -1,5 +1,5 @@
 'use strict';
-app.controller('homeCtrl', ['$scope','homeService','adminService', function ($scope,homeService,adminService) {
+app.controller('homeCtrl', ['$scope','homeService','adminService','loginService', function ($scope,homeService,adminService,loginService) {
 	$scope.tabs = new Array();
 	
     $scope.getProductCategories = function (){
@@ -31,4 +31,10 @@ app.controller('homeCtrl', ['$scope','homeService','adminService', function ($sc
     $scope.addToCart = function(product) {
     	homeService.addToCart(product);
     };
+    
+    $scope.isLogged = function(){
+		return loginService.isLogged();
+	};
+	
+	
 }]);

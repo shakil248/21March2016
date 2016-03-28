@@ -1,5 +1,5 @@
 'use strict';
-app.controller('adminCtrl', ['$scope','adminService', function ($scope,adminService) {
+app.controller('adminCtrl', ['$scope','adminService','loginService', function ($scope,adminService,loginService) {
     $scope.tabs = [{
             title: 'Product Category',
             url: 'resources/partials/tpl/productCategory.tpl.html'
@@ -52,6 +52,10 @@ app.controller('adminCtrl', ['$scope','adminService', function ($scope,adminServ
 		adminService.clearImage();
 		 $scope.imageLoaded=false;
 		 $scope.errorMessage="";
+	};
+	
+	$scope.isLogged = function(){
+		return loginService.isLogged();
 	};
 }]);
 

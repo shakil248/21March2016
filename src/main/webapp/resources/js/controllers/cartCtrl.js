@@ -30,7 +30,10 @@ app.controller('cartCtrl', function($scope,loginService,cartService,sessionServi
 		return loginService.isLogged();
 	};
 	
+	 $scope.getStates=function(){
+		   userService.getStates($scope);
+	};
 	
-	  
+	$scope.getStates();
 	
 });

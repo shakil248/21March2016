@@ -21,9 +21,9 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
 	}
 	
 	@Override
-	public User getUserByLoginId(String loginId){
+	public User getUserByEmailId(String emailId){
 		Criteria cr = getSession().createCriteria(User.class);
-		cr.add(Restrictions.eq("loginId", loginId));
+		cr.add(Restrictions.eq("emailId", emailId));
 		if(cr.list().size()>0){
 			return (User) cr.list().get(0);
 		}

@@ -1,14 +1,15 @@
 'use strict';
-app.factory('loginService', function($location,$http,sessionService) {
+app.factory('loginService', function($location,$http,sessionService,config) {
 	
     return {
-        login: function(scope) { 
+        login: function(scope){ 
 		
-		var res = $http.get('http://localhost:8080/upm/dologin', {params : {'loginId':scope.loginId, 'password':scope.password, 'otp':scope.generatedOTP}});
+		var res = $http.get(config.apiUrl+'dologin', {params : {'emailId':scope.emailId, 'password':scope.password}});
 		res.success(function(data, status, headers, config) {
 			  console.log("Success", data);
 			  if(data==true){
-				  $location.path('/user');  
+				  sessionService.set('emailId',scope.emailId);
+				  $location.path('/home');  
 			  }else{
 				  	scope.loginStats="Login failed";
 			  }
@@ -19,14 +20,16 @@ app.factory('loginService', function($location,$http,sessionService) {
 		},
 		
 		logout: function(){
-				if(sessionService.get('loginId')){
-					sessionService.destroy('loginId');
+				if(sessionService.get('emailId')){
+					sessionService.destroy('emailId');
 					$location.path('/login');
 				}
 		},
 		isLogged: function() {
-			if(sessionService.get('loginId')) {return true;} else {return false;}
-		}
+			if(sessionService.get('emailId')) {return true;} else {return false;}
+		},
+	
+		
 		
     };
 });

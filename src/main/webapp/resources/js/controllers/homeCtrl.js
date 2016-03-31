@@ -4,16 +4,13 @@ app.controller('homeCtrl', ['$scope','homeService','adminService','loginService'
 	
     $scope.getProductCategories = function (){
     	adminService.getProductCategories($scope).then(function(pCats) {
-    		
     		angular.forEach(pCats, function(productCat, index) {
         		if(index==0){
         			$scope.currentTab = 'resources/partials/tpl/home/'+productCat.productCatName+'.tpl.html';
         		}
         		  $scope.tabs.push({title:productCat.productCatName,catId:productCat.productCatId, url:$scope.currentTab});
         	});
-    		
     	});
-    	
     };
     
     $scope.getProductCategories();

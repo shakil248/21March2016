@@ -9,6 +9,9 @@ app.config(['$routeProvider', function($routeProvider) {
 	  $routeProvider.otherwise({redirectTo:'/login'});
 }]);
 	
+app.constant('config', {
+      apiUrl: "http://localhost:8080/petstore/"
+});
 
 
 

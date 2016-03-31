@@ -26,13 +26,13 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User getUserByLoginId(String loginId) {
-		return userDAO.getUserByLoginId(loginId);
+	public User getUserByEmailId(String emailId) {
+		return userDAO.getUserByEmailId(emailId);
 	}
 	
 	@Override
-	public boolean doLogin(String loginId, String password, String otp) {
-			User user = userDAO.getUserByLoginId(loginId);
+	public boolean doLogin(String emailId, String password) {
+			User user = userDAO.getUserByEmailId(emailId);
 			if (null!=user &&  null!=password ){
 				if(password.equals(user.getPassword())){
 						return true;

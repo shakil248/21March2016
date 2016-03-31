@@ -17,8 +17,8 @@ public class CartServiceImpl implements CartService {
 	
 	@Override
 	public void createOrUpdateCart(Cart cart) {
-		if(cart !=null && cart.getLoginId()!=null){
-			Cart existingCart = cartDAO.getCart(cart.getLoginId());
+		if(cart !=null && cart.getEmailId()!=null){
+			Cart existingCart = cartDAO.getCart(cart.getEmailId());
 			if(null!=existingCart){
 				cartDAO.updateCart(cart);
 			}else{

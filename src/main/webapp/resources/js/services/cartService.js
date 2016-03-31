@@ -1,9 +1,9 @@
 'use strict';
-app.factory('cartService',['$http', function($http) {
+app.factory('cartService',['$http','config', function($http,config) {
 	
 	  return {
     	remove: function(cartDetail) { 
-    			var res = $http.post('http://localhost:8080/upm/removecartitem', cartDetail);
+    			var res = $http.post(config.apiUrl+'removecartitem', cartDetail);
     			res.success(function(data, status, headers, config) {
     				  console.log("Success", data);
     				  scope.saveStatus = "Removed Successfuly";
@@ -16,7 +16,7 @@ app.factory('cartService',['$http', function($http) {
     			
     			},
     	 getCart: function(lId){
-				var promise  = $http.get('http://localhost:8080/upm/getcart',{params: {loginId: lId}}).
+				var promise  = $http.get(config.apiUrl+'getcart',{params: {loginId: lId}}).
                 then(function  (response) {
                     return response.data;
                 });
@@ -39,7 +39,7 @@ app.factory('cartService',['$http', function($http) {
     	order.orderDetails = orderDetails;
     	order.status = "InProgress";
     	
-    			var res = $http.post('http://localhost:8080/upm/createorder', order);
+    			var res = $http.post(config.apiUrl+'createorder', order);
     			res.success(function(data, status, headers, config) {
     				  console.log("Success", data);
   					

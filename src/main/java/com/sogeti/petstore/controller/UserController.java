@@ -33,12 +33,8 @@ public class UserController {
 	   }
 	
 	@RequestMapping(value = "/getuser", method = RequestMethod.GET)
-	    public ResponseEntity<User> getUser(@RequestParam(value = "loginId") String loginId) {
-		  User user =  userService.getUserByLoginId(loginId);
-		  if(null!=user){
-//			  String s = new String(user.getImage());
-//			  user.setData(s);
-		  }
+	    public ResponseEntity<User> getUser(@RequestParam(value = "emailId") String emailId) {
+		  User user =  userService.getUserByEmailId(emailId);
 		  return new ResponseEntity<User>(user, HttpStatus.OK);
 	    }
 	 
@@ -50,14 +46,13 @@ public class UserController {
 	 
 	 @RequestMapping(value = "/user", method = RequestMethod.POST)
 	    public @ResponseBody ResponseEntity<Void> createUser(@RequestBody User user) {
-//			user.setImage(user.getData().getBytes());
-		 	user.setData(null);
 	        userService.createOrUpdateUser(user);
 	        return new ResponseEntity<Void>(HttpStatus.CREATED);
 	    }
 	 
 	 @RequestMapping(value = "/dologin", method = RequestMethod.GET)
-	    public boolean dologin(@RequestParam String loginId, String password, String otp) {
-		  return userService.doLogin(loginId, password, otp);
+	    public @ResponseBody ResponseEntity<Boolean> dologin(@RequestParam String emailId, String password) {
+		  Boolean res= userService.doLogin(emailId, password);
+		  return new ResponseEntity<Boolean>(res,HttpStatus.OK);
 	    }
 }

@@ -1,9 +1,9 @@
 'use strict';
-app.factory('homeService',['$http','sessionService', function($http,sessionService) {
+app.factory('homeService',['$http','sessionService','config', function($http,sessionService,config) {
     return {
     	getProductByCat: function(pcId,scope) { 
     		
-    		var promise  = $http.get('http://localhost:8080/upm/getproductbycat',{params: {productCatId: pcId}}).
+    		var promise  = $http.get(config.apiUrl+'getproductbycat',{params: {productCatId: pcId}}).
             then(function  (response) {
                 return response.data;
             });
@@ -26,7 +26,7 @@ app.factory('homeService',['$http','sessionService', function($http,sessionServi
 			cart.loginId = sessionService.get('loginId');
 			
 			
-			var res = $http.post('http://localhost:8080/upm/addtocart', cart);
+			var res = $http.post(config.apiUrl+'addtocart', cart);
 			res.success(function(data, status, headers, config) {
 				  console.log("Success", data);
 					

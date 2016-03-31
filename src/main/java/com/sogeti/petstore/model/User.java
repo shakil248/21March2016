@@ -21,24 +21,16 @@ public class User {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String id;
 	
-	@Column(name="login_id")
-	private String loginId;
-	@Column(name="user_Name")
-	private String userName;
+	@Column(name="name")
+	private String name;
 	@Column(name="email_Id")
 	private String emailId;
 	@Column(name="password")
 	private String password;
 	
-	@Column(name="image", length = 20971520)
-	private byte[] image;
-	
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="address_Id")
 	private Address address;
-	
-	@Transient
-	private String data;
 	
 	public String getId() {
 		return id;
@@ -46,18 +38,7 @@ public class User {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getLoginId() {
-		return loginId;
-	}
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+	
 	public String getEmailId() {
 		return emailId;
 	}
@@ -78,22 +59,12 @@ public class User {
 		this.address = address;
 	}
 	
-	public byte[] getImage() {
-		return image;
+	public String getName() {
+		return name;
 	}
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
-	public String getData() {
-		return data;
-	}
-	public void setData(String data) {
-		this.data = data;
-	}
-	@Override
-	public String toString() {
-		return "UserName "+userName+" email "+emailId+" loginId "+loginId;
-	}
 
 }

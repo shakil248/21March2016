@@ -1,10 +1,10 @@
 'use strict';
-app.factory('adminService',['$http', function($http) {
+app.factory('adminService',['$http','config', function($http,config) {
 	
 	
     return {
     	createProductCat: function(productCat,scope) { 
-			var res = $http.post('http://localhost:8080/petstore/createproductcat', productCat);
+			var res = $http.post(config.apiUrl+'/createproductcat', productCat);
 			res.success(function(data, status, headers, config) {
 				  console.log("Success", data);
 				  scope.saveStatus = "Saved Successfuly";
@@ -18,7 +18,7 @@ app.factory('adminService',['$http', function($http) {
 			},
     	createProduct: function(product,scope) { 
     			product.data = getBase64Image();
-    			var res = $http.post('http://localhost:8080/petstore/createproduct', product);
+    			var res = $http.post(config.apiUrl+'/createproduct', product);
     			res.success(function(data, status, headers, config) {
     				  console.log("Success", data);
     				  scope.saveStatus = "Saved Successfuly";
@@ -31,7 +31,7 @@ app.factory('adminService',['$http', function($http) {
     			
     			},
     	 getUser: function(lId){
-				var promise  = $http.get('http://localhost:8080/petstore/getuser',{params: {loginId: lId}}).
+				var promise  = $http.get(config.apiUrl+'/getuser',{params: {loginId: lId}}).
                 then(function  (response) {
                 	setImage(response.data.data);
                     return response.data;
@@ -40,7 +40,7 @@ app.factory('adminService',['$http', function($http) {
     		 
     	 },		
     	 getProductCategories: function(scope) {
-    		 var promise = $http.get('http://localhost:8080/petstore/getallproductcat').
+    		 var promise = $http.get(config.apiUrl+'/getallproductcat').
     		 then(function  (response) {
                  return response.data;
              });

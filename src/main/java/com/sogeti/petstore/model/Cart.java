@@ -24,9 +24,9 @@ public class Cart extends BaseModel{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String cartId;
 	
-	@Column(name="login_id")
-	private String loginId;
-	
+	@Column(name="email_Id")
+	private String emailId;
+		
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="cart_Id")
 	@JsonManagedReference
@@ -40,14 +40,6 @@ public class Cart extends BaseModel{
 		this.cartId = cartId;
 	}
 
-	public String getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
-	}
-
 	public List<CartDetail> getCartDetails() {
 		return cartDetails;
 	}
@@ -55,4 +47,13 @@ public class Cart extends BaseModel{
 	public void setCartDetails(List<CartDetail> cartDetails) {
 		this.cartDetails = cartDetails;
 	}
+
+	public String getEmailId() {
+		return emailId;
+	}
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+	
 }

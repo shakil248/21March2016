@@ -6,7 +6,7 @@ public interface UserService {
 	
 	public void createOrUpdateUser(User user);
 	public User getUser(String id);
-	public User getUserByLoginId(String loginId);
-	public boolean doLogin(String loginId, String password, String otp);
+	public User getUserByEmailId(String emailId);
+	public boolean doLogin(String emailId, String password);
 
 }

@@ -24,8 +24,8 @@ public class Order extends BaseModel{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String orderId;
 	
-	@Column(name="login_id")
-	private String loginId;
+	@Column(name="email_id")
+	private String emailId;
 	
 	@Column(name="total_amount")
 	private Double totalAmount;
@@ -44,14 +44,6 @@ public class Order extends BaseModel{
 
 	public void setOrderId(String orderId) {
 		this.orderId = orderId;
-	}
-
-	public String getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
 	}
 
 	public Double getTotalAmount() {
@@ -77,6 +69,15 @@ public class Order extends BaseModel{
 	public void setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
+
+	public String getEmailId() {
+		return emailId;
+	}
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+	
 	
 	
 }

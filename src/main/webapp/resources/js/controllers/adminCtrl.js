@@ -6,10 +6,7 @@ app.controller('adminCtrl', ['$scope','adminService','loginService', function ($
         }, {
             title: 'Product',
             url: 'resources/partials/tpl/product.tpl.html'
-        }, {
-            title: 'Three',
-            url: 'resources/partials/tpl/three.tpl.html'
-    }];
+        }];
 
     $scope.currentTab = 'resources/partials/tpl/productCategory.tpl.html';
 

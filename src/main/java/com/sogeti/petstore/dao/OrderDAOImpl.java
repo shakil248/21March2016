@@ -26,9 +26,9 @@ public class OrderDAOImpl extends BaseDAO implements OrderDAO {
 	}
 
 	@Override
-	public Order getOrder(String loginId) {
+	public Order getOrder(String emailId) {
 		Criteria cr = getSession().createCriteria(Order.class);
-		cr.add(Restrictions.eq("loginId", loginId));
+		cr.add(Restrictions.eq("emailId", emailId));
 		if(cr.list().size()>0){
 			return (Order) cr.list().get(0);
 		}

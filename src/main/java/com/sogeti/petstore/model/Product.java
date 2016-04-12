@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name="PRODUCT")
@@ -23,15 +22,10 @@ public class Product {
 	private String productDesc;
 	private String productPrice;
 	private Integer inStock;
+	private String sku;
 	private Boolean isActive;
 	private Date createDate;
 	private Date updateDate;
-	
-	@Column(name="image", length = 20971520)
-	private byte[] image;
-	
-	@Transient
-	private String data;
 	
 	
 	public String getProductId() {
@@ -88,16 +82,11 @@ public class Product {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-	public byte[] getImage() {
-		return image;
+	public String getSku() {
+		return sku;
 	}
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setSku(String sku) {
+		this.sku = sku;
 	}
-	public String getData() {
-		return data;
-	}
-	public void setData(String data) {
-		this.data = data;
-	}
+
 }

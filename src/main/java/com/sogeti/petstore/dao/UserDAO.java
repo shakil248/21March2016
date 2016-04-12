@@ -6,6 +6,6 @@ public interface UserDAO {
 
 	public void createOrUpdateUser(User user);
 	public User getUser(String id);
-	public User getUserByEmailId(String loginId);
+	public User getUserByEmailId(String emailId);
 	
 }

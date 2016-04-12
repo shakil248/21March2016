@@ -7,19 +7,16 @@
 	</div>
 
 	<div>
-		 <h3 style="margin-left: 123px;">Product Picture</h3>
-		 <img id="productImg" height="150" width="120" style="margin-left: 122px; margin-bottom:20px" />
-		 <div>
-		 	<input id="InputProductPicture" type="file" accept="image/*" onchange="angular.element(this).scope().uploadImage(this.files)" value="Upload Photo" style="margin-left: 120px;margin-bottom:20px" data-buttonText="Your label here.">
-		 </div>
-	</div>
-	<div>
 		<label for="InputProductName">Product Name</label>
 		<input type="text" placeholder="Enter Product Name" id="InputProductName" required ng-model="product.productName" style="margin-left: 60px;">
 	</div>
 	<div>
 		<label for="InputProductDesc">Product Description</label>
 		<input type="text" placeholder="Enter Product Description" id="InputProductDesc" required ng-model="product.productDesc" style="margin-left: 55px;">
+	</div>
+	<div>
+		<label for="InputProductSku">Product Sku</label>
+		<input type="text" placeholder="Enter Product Sku" id="InputProductSku" required ng-model="product.sku" style="margin-left: 55px;">
 	</div>
 	<div>
 		<label for="InputProductPrice">Product Price</label>
@@ -37,7 +34,7 @@
 	</div>
 
 	<div>
-	<button class="btn btn-default" type="submit" ng-click="createProduct(product)" ng-disabled="productForm.$invalid || !imageLoaded" style="margin-left: 119px; margin-top: 30px">Submit</button>	
+	<button class="btn btn-default" type="submit" ng-click="createProduct(product)" ng-disabled="productForm.$invalid" style="margin-left: 119px; margin-top: 30px">Submit</button>	
 	<button class="btn btn-default" type="button" ng-click="clearProduct(product)" >Clear</button>
 	</div>
 

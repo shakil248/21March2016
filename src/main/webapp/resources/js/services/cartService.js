@@ -16,7 +16,7 @@ app.factory('cartService',['$http','config', function($http,config) {
     			
     			},
     	 getCart: function(lId){
-				var promise  = $http.get(config.apiUrl+'getcart',{params: {loginId: lId}}).
+				var promise  = $http.get(config.apiUrl+'getcart',{params: {emailId: lId}}).
                 then(function  (response) {
                     return response.data;
                 });
@@ -34,7 +34,7 @@ app.factory('cartService',['$http','config', function($http,config) {
     		orderDetails.push(orderDetail);
     	});
     	var order = new Object();
-    	order.loginId= cart.loginId;
+    	order.emailId= cart.emailId;
     	order.totalAmount= totalAmount;
     	order.orderDetails = orderDetails;
     	order.status = "InProgress";

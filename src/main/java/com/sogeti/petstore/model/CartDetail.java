@@ -31,6 +31,8 @@ public class CartDetail extends BaseModel {
 	private String productPrice;
 	@Column(name="quantity")
 	private Integer quantity;
+	@Column(name="sku")
+	private String sku;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="cart_Id")
@@ -74,4 +76,11 @@ public class CartDetail extends BaseModel {
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
+	public String getSku() {
+		return sku;
+	}
+	public void setSku(String sku) {
+		this.sku = sku;
+	}
+	
 }

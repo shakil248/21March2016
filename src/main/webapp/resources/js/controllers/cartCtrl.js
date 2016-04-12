@@ -1,7 +1,7 @@
 'use strict';
 app.controller('cartCtrl', function($scope,loginService,cartService,sessionService,userService){
 	
-	$scope.lId = sessionService.get('loginId');
+	$scope.lId = sessionService.get('emailId');
 	
 	
 	if(null!=$scope.lId && $scope.lId!=''){

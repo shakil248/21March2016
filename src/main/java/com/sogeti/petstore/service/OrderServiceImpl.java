@@ -25,8 +25,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Order getOrder(String loginId) {
-		return orderDAO.getOrder(loginId);
+	public Order getOrder(String emailId) {
+		return orderDAO.getOrder(emailId);
 	}
 
 }

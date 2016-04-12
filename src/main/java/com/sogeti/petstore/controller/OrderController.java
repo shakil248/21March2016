@@ -20,8 +20,8 @@ public class OrderController {
 	OrderService orderService;
 	
 	@RequestMapping(value = "/getorder", method = RequestMethod.GET)
-    public ResponseEntity<Order> getOrder(@RequestParam(value = "loginId") String loginId) {
-		Order order =  orderService.getOrder(loginId);
+    public ResponseEntity<Order> getOrder(@RequestParam(value = "emailId") String emailId) {
+		Order order =  orderService.getOrder(emailId);
 	return new ResponseEntity<Order>(order, HttpStatus.OK);
     }
 	

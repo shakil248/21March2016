@@ -6,6 +6,6 @@ public interface OrderDAO {
 	
 	public void createOrder(Order order);
 	public void updateOrder(Order order);
-	public Order getOrder(String loginId);
+	public Order getOrder(String emailId);
 
 }

@@ -9,6 +9,7 @@ app.controller('adminCtrl', ['$scope','adminService','loginService', function ($
         }];
 
     $scope.currentTab = 'resources/partials/tpl/productCategory.tpl.html';
+    $scope.saveStatus="";
 
     $scope.onClickTab = function (tab) {
     	 $scope.getProductCategories();
@@ -39,15 +40,8 @@ app.controller('adminCtrl', ['$scope','adminService','loginService', function ($
     		adminService.createProduct(product,$scope);
 	};
 	
-	$scope.uploadImage = function(files) {
-		 $scope.imageLoaded=true;
-		 adminService.uploadImage(files);
-	};
-	
 	$scope.clearProduct = function(product){
 		$scope.product=null;
-		adminService.clearImage();
-		 $scope.imageLoaded=false;
 		 $scope.errorMessage="";
 	};
 	

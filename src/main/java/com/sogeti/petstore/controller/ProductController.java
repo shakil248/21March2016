@@ -30,10 +30,6 @@ public class ProductController {
 	@RequestMapping(value = "/getproduct", method = RequestMethod.GET)
 	    public ResponseEntity<Product> getProduct(@RequestParam(value = "productId") String productId) {
 		Product product = productService.getProduct(productId);
-		  if(null!=product){
-			  String s = new String(product.getImage());
-			  product.setData(s);
-		  }
 		  return new ResponseEntity<Product>(product, HttpStatus.OK);
 	    }
 	
@@ -45,8 +41,6 @@ public class ProductController {
 	
 	@RequestMapping(value = "/createproduct", method = RequestMethod.POST)
     public @ResponseBody ResponseEntity<Void> createProduct(@RequestBody Product product) {
-		product.setImage(product.getData().getBytes());
-		product.setData(null);
         productService.createOrUpdateProduct(product);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }

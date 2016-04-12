@@ -6,7 +6,7 @@ import com.sogeti.petstore.model.CartDetail;
 public interface CartService {
 	
 	public void createOrUpdateCart(Cart cart);
-	public Cart getCart(String loginId);
+	public Cart getCart(String emailId);
 	public void removeCartItem(CartDetail cartDetail);
 
 }

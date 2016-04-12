@@ -13,9 +13,9 @@ public class CartDAOImpl extends BaseDAO implements CartDAO {
 	
 
 	@Override
-	public Cart getCart(String loginId) {
+	public Cart getCart(String emailId) {
 		Criteria cr = getSession().createCriteria(Cart.class);
-		cr.add(Restrictions.eq("loginId", loginId));
+		cr.add(Restrictions.eq("emailId", emailId));
 		if(cr.list().size()>0){
 			return (Cart) cr.list().get(0);
 		}
@@ -30,7 +30,7 @@ public class CartDAOImpl extends BaseDAO implements CartDAO {
 
 	@Override
 	public void updateCart(Cart cart) {
-		update(cart);
+		saveOrUpdate(cart);
 		
 	}
 

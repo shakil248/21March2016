@@ -17,7 +17,6 @@ app.factory('adminService',['$http','config', function($http,config) {
 			
 			},
     	createProduct: function(product,scope) { 
-    			product.data = getBase64Image();
     			var res = $http.post(config.apiUrl+'/createproduct', product);
     			res.success(function(data, status, headers, config) {
     				  console.log("Success", data);
@@ -31,9 +30,8 @@ app.factory('adminService',['$http','config', function($http,config) {
     			
     			},
     	 getUser: function(lId){
-				var promise  = $http.get(config.apiUrl+'/getuser',{params: {loginId: lId}}).
+				var promise  = $http.get(config.apiUrl+'/getuser',{params: {emailId: lId}}).
                 then(function  (response) {
-                	setImage(response.data.data);
                     return response.data;
                 });
 				return promise ;
@@ -46,32 +44,7 @@ app.factory('adminService',['$http','config', function($http,config) {
              });
 				 return promise;
     	 },
-    	 
-    	 uploadImage:function(files){
-    		 var productImg = document.getElementById('productImg');
-    		 productImg.src = URL.createObjectURL(files[0]);
-    	 },
-    	 clearImage:function(){
-    		 document.getElementById("productImg").src = "";
-    	 }
     };
-    
-    function setImage(data){
-    	document.getElementById("productImg").src = data;
-    }
-	function getBase64Image(){     
-		var p;var canvas = document.createElement("canvas");
-		var img1=document.createElement("img"); 	
-	
-	    p=document.getElementById("productImg");
-	    img1.setAttribute('src', p.src); 
-	    canvas.width = img1.width; 
-	    canvas.height = img1.height; 
-	    var ctx = canvas.getContext("2d"); 
-	    ctx.drawImage(img1, 0, 0); 
-	    var dataURL = canvas.toDataURL("image/png");
-	    return dataURL;
-} 
 }]);
 
 

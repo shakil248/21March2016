@@ -21,8 +21,8 @@ public class CartController {
 	CartService cartService;
 	
 	@RequestMapping(value = "/getcart", method = RequestMethod.GET)
-    public ResponseEntity<Cart> getCart(@RequestParam(value = "loginId") String loginId) {
-	  Cart cart =  cartService.getCart(loginId);
+    public ResponseEntity<Cart> getCart(@RequestParam(value = "emailId") String emailId) {
+	  Cart cart =  cartService.getCart(emailId);
 	return new ResponseEntity<Cart>(cart, HttpStatus.OK);
     }
 	

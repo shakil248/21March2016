@@ -2,18 +2,23 @@
 app.controller('cartCtrl', function($scope,loginService,cartService,sessionService,userService){
 	
 	$scope.lId = sessionService.get('emailId');
-	
+	$scope.noItemInCart = false;
 	
 	if(null!=$scope.lId && $scope.lId!=''){
 		cartService.getCart($scope.lId).then(function(cart) {
-			$scope.cart= cart;
+			if(cart.cartDetails.length<1){
+				$scope.noItemInCart = true;
+			}else{
+				$scope.cart= cart;
+				userService.getUser($scope.lId).then(function(user) {
+					$scope.user= user;
+			    });
+			}
 	    });
-		userService.getUser($scope.lId).then(function(user) {
-			$scope.user= user;
-	    });
+		
 	}
 
-	$scope.remove=function(cartDetail){
+	$scope.remove=function($scope, cartDetail){
 		 cartService.remove(cartDetail);
 	};
 	

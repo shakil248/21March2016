@@ -1,5 +1,7 @@
 package com.sogeti.petstore.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +29,11 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Order getOrder(String emailId) {
 		return orderDAO.getOrder(emailId);
+	}
+
+	@Override
+	public List<Order> getAllOrders() {
+		return orderDAO.getAllOrders();
 	}
 
 }

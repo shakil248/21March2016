@@ -24,6 +24,9 @@ public class Order extends BaseModel{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String orderId;
 	
+	@Column(name="order_number")
+	private String orderNumber;
+	
 	@Column(name="email_id")
 	private String emailId;
 	
@@ -76,6 +79,14 @@ public class Order extends BaseModel{
 
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
+	}
+
+	public String getOrderNumber() {
+		return orderNumber;
+	}
+
+	public void setOrderNumber(String orderNumber) {
+		this.orderNumber = orderNumber;
 	}
 	
 	

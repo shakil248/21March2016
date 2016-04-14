@@ -33,8 +33,22 @@ public class CartServiceImpl implements CartService {
 			
 			if(inStock){
 					if(null!=existingCart){
-						existingCart.getCartDetails().add(cartDetail);
-						cartDAO.updateCart(existingCart);
+						boolean isProductEixist=false;
+						for(CartDetail cartDetail2 : existingCart.getCartDetails()){
+							if(cartDetail.getProductId().equals(cartDetail.getProductId())){
+								cartDetail2.setQuantity(cartDetail.getQuantity());
+								isProductEixist=true;
+								break;
+							}
+								
+						}
+						if(isProductEixist){
+							cartDAO.updateCart(existingCart);
+						}else{
+							cartDetail.setCart(null);
+							existingCart.getCartDetails().add(cartDetail);
+							cartDAO.updateCart(existingCart);
+						}
 					}else{
 						cartDAO.saveCart(cart);
 					}

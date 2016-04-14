@@ -3,7 +3,9 @@
 <div ng-if="!isLogged()"><a href="/petstore/#/login">Go to Login</a></div>
 <div ng-if="isLogged()"><a href="/petstore/#/admin">Go to admin</a></div>
 <div ng-if="isLogged()"><a href="/petstore/#/home">Go to home</a></div>
-
+<div ng-if="noItemInCart"></div>
+<h2>There is No Item in cart</h2>
+<div ng-if="!noItemInCart">
 <table>
 <tr><th>Image</th><th>Name</th><th>Price</th><th>Quantity</th><th>Total</th><th>Action</th></tr>
 <tr ng-repeat="x in cart.cartDetails">
@@ -52,6 +54,6 @@
 	</div>
 	
 	<button ng-click="createOrder(cart)">Place Order</button>
-	
+	</div>
 </div>
 

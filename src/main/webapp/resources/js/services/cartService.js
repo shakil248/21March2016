@@ -2,11 +2,18 @@
 app.factory('cartService',['$http','config', function($http,config) {
 	
 	  return {
-    	remove: function(cartDetail) { 
+    	remove: function(scope, cartDetail) { 
     			var res = $http.post(config.apiUrl+'removecartitem', cartDetail);
     			res.success(function(data, status, headers, config) {
     				  console.log("Success", data);
-    				  scope.saveStatus = "Removed Successfuly";
+    				  var newCartDetails = new Array();
+    				  angular.forEach(scope.cart.cartDetail, function(cd){
+    					  if(cartDetail.productId != cd.productId){
+    						  newCartDetails.push(cd);
+    					  }
+    				  });
+    				  scope.cart.cartDetails = newCartDetails;
+    				  
   					
     			});
     			res.error(function(data, status, headers, config) {

@@ -4,7 +4,7 @@ app.factory('adminService',['$http','config', function($http,config) {
 	
     return {
     	createProductCat: function(productCat,scope) { 
-			var res = $http.post(config.apiUrl+'/createproductcat', productCat);
+			var res = $http.post(config.apiUrl+'createproductcat', productCat);
 			res.success(function(data, status, headers, config) {
 				  console.log("Success", data);
 				  scope.saveStatus = "Saved Successfuly";
@@ -17,7 +17,7 @@ app.factory('adminService',['$http','config', function($http,config) {
 			
 			},
     	createProduct: function(product,scope) { 
-    			var res = $http.post(config.apiUrl+'/createproduct', product);
+    			var res = $http.post(config.apiUrl+'createproduct', product);
     			res.success(function(data, status, headers, config) {
     				  console.log("Success", data);
     				  scope.saveStatus = "Saved Successfuly";
@@ -29,16 +29,43 @@ app.factory('adminService',['$http','config', function($http,config) {
     			});	
     			
     			},
+    	updateOrder: function(order) { 
+        			var res = $http.post(config.apiUrl+'updateorder', order);
+        			res.success(function(data, status, headers, config) {
+        				  console.log("Success", data);
+        				  scope.saveStatus = "Updated Successfuly";
+      					
+        			});
+        			res.error(function(data, status, headers, config) {
+        				 console.log(data);
+        				 scope.saveStatus = "!Oops saving failed";
+        			});	
+        			
+        		},
     	 getUser: function(lId){
-				var promise  = $http.get(config.apiUrl+'/getuser',{params: {emailId: lId}}).
+				var promise  = $http.get(config.apiUrl+'getuser',{params: {emailId: lId}}).
                 then(function  (response) {
                     return response.data;
                 });
 				return promise ;
     		 
     	 },		
-    	 getProductCategories: function(scope) {
-    		 var promise = $http.get(config.apiUrl+'/getallproductcat').
+    	 getProductCategories: function() {
+    		 var promise = $http.get(config.apiUrl+'getallproductcat').
+    		 then(function  (response) {
+                 return response.data;
+             });
+				 return promise;
+    	 },
+    	 getAllOrders: function() {
+    		 var promise = $http.get(config.apiUrl+'getallorders').
+    		 then(function  (response) {
+                 return response.data;
+             });
+				 return promise;
+    	 },
+    	 getAllProducts: function() {
+    		 var promise = $http.get(config.apiUrl+'getallproducts').
     		 then(function  (response) {
                  return response.data;
              });

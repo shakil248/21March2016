@@ -11,9 +11,6 @@ import com.sogeti.petstore.model.User;
 
 @Repository
 public class ProductDAOImpl extends BaseDAO implements ProductDAO {
-
-	
-
 	
 
 	@Override
@@ -21,6 +18,7 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
 		
 			Criteria cr = getSession().createCriteria(Product.class);
 			cr.add(Restrictions.eq("productCatId", productCatId));
+			cr.add(Restrictions.eq("isActive", true));
 			if(cr.list().size()>0){
 				return (List<Product>) cr.list();
 			}
@@ -38,4 +36,10 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
 		return get(Product.class, productId);
 	}
 
+	@Override
+	public List<Product> getAllProducts() {
+		return getAll(Product.class);
+	}
+
+	
 }

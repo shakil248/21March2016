@@ -1,5 +1,7 @@
 package com.sogeti.petstore.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,12 @@ public class OrderController {
     public ResponseEntity<Order> getOrder(@RequestParam(value = "emailId") String emailId) {
 		Order order =  orderService.getOrder(emailId);
 	return new ResponseEntity<Order>(order, HttpStatus.OK);
+    }
+	
+	@RequestMapping(value = "/getallorders", method = RequestMethod.GET)
+    public ResponseEntity<List<Order>> getAllOrders() {
+		List<Order> orders =  orderService.getAllOrders();
+	return new ResponseEntity<List<Order>>(orders, HttpStatus.OK);
     }
 	
 	 @RequestMapping(value = "/createorder", method = RequestMethod.POST)

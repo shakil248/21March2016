@@ -1,14 +1,12 @@
 package com.sogeti.petstore.dao;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Repository;
 
 import com.sogeti.petstore.model.Order;
-import com.sogeti.petstore.model.Product;
-import com.sogeti.petstore.spring.AppConfig;
 
 @Repository
 public class OrderDAOImpl extends BaseDAO implements OrderDAO {
@@ -16,13 +14,11 @@ public class OrderDAOImpl extends BaseDAO implements OrderDAO {
 	@Override
 	public void createOrder(Order order) {
 		persist(order);
-
 	}
 
 	@Override
 	public void updateOrder(Order order) {
 		update(order);
-
 	}
 
 	@Override
@@ -34,7 +30,12 @@ public class OrderDAOImpl extends BaseDAO implements OrderDAO {
 		}
 		return null;
 	}
+
+	@Override
+	public List<Order> getAllOrders() {
+		return getAll(Order.class);
+	}
 	
-
-
+	
+	
 }

@@ -1,4 +1,11 @@
 <div>
+<div>
+<ul>
+  <li ng-repeat="x	in products">
+    {{ x.orderNumber + ', ' + x.emailId + ', ' + x.totalAmount + ', ' + x.status }} <button ng-click="editProduct(x)">Edit</button>
+  </li>
+</ul>
+</div>
 <form role="form" name="productForm">
 
 	<div>
